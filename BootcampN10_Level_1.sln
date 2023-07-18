@@ -71,9 +71,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "N6_HT2", "N6_HT2\N6_HT2.csp
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tasks", "Tasks", "{88F9ACC5-B7CE-40FC-A044-DF9431C03CE6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HandsOnDataTypes", "HandsOnDataTypes\HandsOnDataTypes.csproj", "{5A8E8E80-9E5D-4A4F-A918-04F91989EDFB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HandsOnDataTypes", "HandsOnDataTypes\HandsOnDataTypes.csproj", "{5A8E8E80-9E5D-4A4F-A918-04F91989EDFB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "N6", "N6\N6.csproj", "{C5031817-A6FC-4E9C-88EC-D70CC8D772CC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "N6", "N6\N6.csproj", "{C5031817-A6FC-4E9C-88EC-D70CC8D772CC}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Lesson_7", "Lesson_7", "{5E50E0B5-E74E-4001-B862-067EC5115204}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

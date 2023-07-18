@@ -1,5 +1,4 @@
-﻿//№1:
-using N5;
+﻿using N5;
 
 List<student> Student = new List<student>()
 {
@@ -98,15 +97,16 @@ while (true)
         }
         if (s == "3")
         {
-            Console.WriteLine("№:\tIsm:\t\t11.07\t12.07\t13.07\t14.07");
-            for (int i = 0; i < 18; i++)
+            Console.WriteLine("№:\t\tIsm:\t\t\t\t11.07\t\t12.07\t\t13.07\t\t14.07");
+            for (int i = 0; i < 17; i++)
             {
                 var ism = Student[i].FullName.Split();
-                Console.Write($"\n{Student[i].Id}){ism[0]} {ism[1][0]} -\t");
+                Console.Write(Student[i].FullName.PadRight(45, ' '));
                 for (int j = 0; j < 4; j++)
                 {
-                    Console.Write($"{balls[i, j]}\t");
+                    Console.Write($"\t{balls[i, j]}\t");
                 }
+                Console.WriteLine();
             }
         }
         if (s == "0")

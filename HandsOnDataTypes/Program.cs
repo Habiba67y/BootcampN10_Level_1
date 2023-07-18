@@ -196,10 +196,10 @@ for (var indexA = 0; indexA < friends.Length - 1; indexA++)
 
 var friendsCopy = new string[friends.Length];
 friends.CopyTo(friendsCopy, 0);
-friends.CopyTo(friendsCopy, 0);
+//friends.CopyTo(friendsCopy, 0);
 
 //foreach (var friend in friendsCopy)
-//    Console.WriteLine(friend);
+//   Console.WriteLine(friend);
 
 //GCHandle handleA = GCHandle.Alloc(friends[0], GCHandleType.Pinned);
 //IntPtr pointerA = handleA.AddrOfPinnedObject();
@@ -262,7 +262,7 @@ for (var indexA = 0; indexA < names.Length - 1; indexA++)
             names[indexB] = tempName;
         }
 
-for (var index = 0; index < names.Length; index++)
-    Console.WriteLine(names[index] + " " + birthdates[index]);
+//for (var index = 0; index < names.Length; index++)
+//    Console.WriteLine(names[index] + " " + birthdates[index]);
 
 #endregion
