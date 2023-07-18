@@ -98,8 +98,6 @@ while (true)
         }
         if (s == "3")
         {
-            var n = "H";
-            Console.WriteLine("{-7 0}", n);
             Console.WriteLine("№:\tIsm:\t\t11.07\t12.07\t13.07\t14.07");
             for (int i = 0; i < 18; i++)
             {
