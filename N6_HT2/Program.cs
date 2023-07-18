@@ -218,4 +218,4 @@ while (true)
         break;
     }
 }
-Console.WriteLine("Rahmat!!!");
+Console.WriteLine("Rahmat!");

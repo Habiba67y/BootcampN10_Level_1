@@ -1,134 +1,121 @@
-﻿////№1:
-//using N5;
+﻿//№1:
+using N5;
 
-//List<student> Student = new List<student>()
-//{
-//    new student(){ Id = 1, FullName = "Abdulxayev Jasurbek Anvar O'g'li",  Age = 18,  EduType = "DotNET", Payment = 2400000, IsPayable = true },
-//    new student(){ Id = 2, FullName = "Abdumannonov Botirjon Davlat O'g'li",  Age = 20,  EduType = "Python", Payment = 2300000, IsPayable = false},
-//    new student(){ Id = 3, FullName = "Abdurahmonov Azizbek Alisher O'g'li",  Age = 21,  EduType = "DotNET", Payment = 2200000, IsPayable = true },
-//    new student(){ Id = 4, FullName = "Anvarjonov Ozodbek Avazxon O'g'li",  Age = 16,  EduType = "SMM", Payment = 2100000, IsPayable = true},
-//    new student(){ Id = 5, FullName = "Asadov Firdavs Asqarbek O'g'li",  Age = 17,  EduType = "Dizayn", Payment = 2000000, IsPayable = false },
-//    new student(){ Id = 6, FullName = "Eshmurodov Umarali Abduhalim O'g'li",  Age = 23,  EduType = "SMM", Payment = 1900000 , IsPayable = false},
-//    new student(){ Id = 7, FullName = "Jo'raboyev Boburjon Murodjon O'g'li",  Age = 22,  EduType = "Dizayn", Payment = 1800000 , IsPayable = true},
-//    new student(){ Id = 8, FullName = "Karimjonov Ilhom Ramzjon O'g'li",  Age = 21,  EduType = "DotNET", Payment = 1800000 , IsPayable = true},
-//    new student(){ Id = 9, FullName = "Komiljonov Muhammadaziz Abduraximovich",  Age = 19,  EduType = "Python", Payment = 1800000 , IsPayable = true},
-//    new student(){ Id = 10, FullName = "Rashidov Asadbek",  Age = 20,  EduType = "Dizayn", Payment = 1800000    , IsPayable = false},
-//    new student(){ Id = 11, FullName = "Sadriddinov Abdurahmon Jurabek O'g'li",  Age = 19,  EduType = "Python", Payment = 1900000 , IsPayable = false},
-//    new student(){ Id = 12, FullName = "Sattorova Habiba Shuxrat Qizi",  Age = 17,  EduType = "DotNET", Payment = 1800000, IsPayable = false },
-//    new student(){ Id = 14, FullName = "Tolibov Firdavs Odil O'g'li",  Age = 24,  EduType = "DotNET", Payment = 2000000, IsPayable = true },
-//    new student(){ Id = 15, FullName = "To'rayev Dinur Alisher O'g'li",  Age = 21,  EduType = "Python", Payment = 2100000 , IsPayable = true},
-//    new student(){ Id = 16, FullName = "Vositov Muhammadrizo Muhammadtolib O'g'li",  Age = 25,  EduType = "SMM", Payment = 2200000, IsPayable = true },
-//    new student(){ Id = 17, FullName = "Xaybullayev Mexroj Mansurjonovich",  Age = 16,  EduType = "Dizayn", Payment = 2300000, IsPayable = true },
-//    new student(){ Id = 18, FullName = "Xolmuratov Qurbonali Suxrob O'g'li",  Age = 23,  EduType = "DotNET", Payment = 2400000, IsPayable = false },
-//};
-//while (true)
-//{
-//    string s = Console.ReadLine();
-//    if (!string.IsNullOrEmpty(s))
-//    {
-//        if (s == "1")
-//        {
-//            Console.WriteLine("1 - DotNET\n2 - SMM\n3 - Python\n4 - Dizayn\n");
-//            Console.Write("Tanlovingiz: ");
-//            char b = Console.ReadKey().KeyChar;
-//            switch (b)
-//            {
-//                case '1':
-//                    foreach (var st in Student)
-//                    {
-//                        if (st.EduType == "DotNET")
-//                        {
-//                            Console.WriteLine($"\nID: {st.Id} FullName: {st.FullName} Age: {st.Age}");
-//                        }
-//                    }
-//                    break;
-//                case '2':
-//                    foreach (var st in Student)
-//                    {
-//                        if (st.EduType == "SMM")
-//                        {
-//                            Console.WriteLine($"\nID: {st.Id} FullName: {st.FullName} Age: {st.Age}");
-//                        }
-
-//                    }
-//                    break;
-//                case '3':
-//                    foreach (var st in Student)
-//                    {
-//                        if (st.EduType == "Python")
-//                        {
-//                            Console.WriteLine($"\nID: {st.Id} FullName: {st.FullName} Age: {st.Age}");
-//                        }
-
-//                    }
-//                    break;
-//                case '4':
-//                    foreach (var st in Student)
-//                    {
-//                        if (st.EduType == "Dizayn")
-//                        {
-//                            Console.WriteLine($"\nID: {st.Id} FullName: {st.FullName} Age: {st.Age}");
-//                        }
-
-//                    }
-//                    break;
-//                default: Console.WriteLine("\nXato buyruq!"); break;
-//            }
-//        }
-//        if(s == "0")
-//        {
-//            break;
-//        }
-//    }
-//}
-
-
-//№2:
-string[] names = new string[10]
+List<student> Student = new List<student>()
 {
-    "Malika",
-    "Parizoda",
-    "Maryam",
-    "Madina",
-    "Muhammadsaid",
-    "Nozima",
-    "Habiba",
-    "MuhammadAli",
-    "Muslima",
-    "Abdurahmon"
+    new student(){ Id = 1, FullName = "Abdulxayev Jasurbek Anvar O'g'li",  BirthDay = new DateTime(2005, 12, 12),  EduType = "DotNET", Payment = 2400000 },
+    new student(){ Id = 2, FullName = "Abdumannonov Botirjon Davlat O'g'li",  BirthDay = new DateTime(2004, 1, 17),  EduType = "Python", Payment = 1600000 },
+    new student(){ Id = 3, FullName = "Abdurahmonov Azizbek Alisher O'g'li",  BirthDay = new DateTime(2003, 12, 12),  EduType = "DotNET", Payment = 2400000 },
+    new student(){ Id = 4, FullName = "Anvarjonov Ozodbek Avazxon O'g'li",  BirthDay = new DateTime(2003, 11, 1),  EduType = "SMM", Payment = 1450000 },
+    new student(){ Id = 5, FullName = "Asadov Firdavs Asqarbek O'g'li",  BirthDay = new DateTime(2006, 7, 18),  EduType = "Dizayn", Payment = 1900000 },
+    new student(){ Id = 6, FullName = "Eshmurodov Umarali Abduhalim O'g'li",  BirthDay = new DateTime(2005, 12, 12),  EduType = "SMM", Payment = 1450000 },
+    new student(){ Id = 7, FullName = "Jo'raboyev Boburjon Murodjon O'g'li",  BirthDay = new DateTime(2007, 4, 12),  EduType = "Dizayn", Payment = 1900000 },
+    new student(){ Id = 8, FullName = "Karimjonov Ilhom Ramzjon O'g'li",  BirthDay = new DateTime(2005, 8, 1),  EduType = "DotNET", Payment = 2400000 },
+    new student(){ Id = 9, FullName = "Komiljonov Muhammadaziz Abduraximovich",  BirthDay = new DateTime(2002, 1, 12),  EduType = "Python", Payment = 1600000 },
+    new student(){ Id = 10, FullName = "Rashidov Asadbek",  BirthDay = new DateTime(2001, 3, 12),  EduType = "Dizayn", Payment = 1900000 },
+    new student(){ Id = 11, FullName = "Sadriddinov Abdurahmon Jurabek O'g'li",  BirthDay = new DateTime(2003, 5, 12),  EduType = "Python", Payment = 1600000 },
+    new student(){ Id = 12, FullName = "Sattorova Habiba Shuxrat Qizi",  BirthDay = new DateTime(2006, 2, 7),  EduType = "DotNET", Payment = 2400000 },
+    new student(){ Id = 14, FullName = "Tolibov Firdavs Odil O'g'li",  BirthDay = new DateTime(2003, 5, 6),  EduType = "DotNET", Payment = 2400000 },
+    new student(){ Id = 15, FullName = "To'rayev Dinur Alisher O'g'li",  BirthDay = new DateTime(2002, 8, 22),  EduType = "Python", Payment = 1600000 },
+    new student(){ Id = 16, FullName = "Vositov Muhammadrizo Muhammadtolib O'g'li",  BirthDay = new DateTime(2000, 11, 20),  EduType = "SMM", Payment = 1450000 },
+    new student(){ Id = 17, FullName = "Xaybullayev Mexroj Mansurjonovich",  BirthDay = new DateTime(2005, 2, 12),  EduType = "Dizayn", Payment = 1900000 },
+    new student(){ Id = 18, FullName = "Xolmuratov Qurbonali Suxrob O'g'li",  BirthDay = new DateTime(2006, 5, 9),  EduType = "DotNET", Payment = 2400000 },
 };
-DateTime[] birthdays = new DateTime[10]
+int[,] balls = new int[,]
 {
-    new DateTime(2011, 09, 01),
-    new DateTime(2004, 05, 18),
-    new DateTime(2021, 09, 27),
-    new DateTime(2006, 12, 27),
-    new DateTime(2008, 09, 01),
-    new DateTime(1986, 06, 05),
-    new DateTime(2006, 06, 02),
-    new DateTime(2014, 05, 25),
-    new DateTime(2016, 07, 21),
-    new DateTime(2014, 04, 14)
+    { 90, 100, 75, 60 },
+    { 100, 100, 70, 0 },
+    { 90, 50, 60, 100 },
+    { 60, 50, 100, 90 },
+    { 100, 10, 75, 45 },
+    { 55, 85, 70, 60 },
+    { 95, 90, 40, 100 },
+    { 80, 100, 100, 40 },
+    { 65, 80, 100, 50 },
+    { 80, 90, 100, 60 },
+    { 90, 85, 65, 55 },
+    { 100, 55, 90, 100 },
+    { 80, 75, 90, 60 },
+    { 90, 90, 100, 55 },
+    { 100, 60, 90, 75 },
+    { 90, 80, 50, 100 },
+    { 100, 100, 60, 60 },
+    { 90, 50, 80, 90 },
 };
-DateTime b;
-string n;
-for (int i = 0; i < 9; i++)
+while (true)
 {
-    for (int j = i + 1; j < 10; j++)
+    string s = Console.ReadLine();
+    if (!string.IsNullOrEmpty(s))
     {
-        if (birthdays[i].DayOfYear > birthdays[j].DayOfYear)
+        if (s == "1")
         {
-            b = birthdays[i];
-            n = names[i];
-            birthdays[i] = birthdays[j];
-            names[i] = names[j];
-            birthdays[j] = b;
-            names[j] = n;
+            Console.WriteLine("1 - DotNET\n2 - SMM\n3 - Python\n4 - Dizayn\n");
+            Console.Write("Tanlovingiz: ");
+            char b = Console.ReadKey().KeyChar;
+            switch (b)
+            {
+                case '1':
+                    foreach (var st in Student)
+                    {
+                        if (st.EduType == "DotNET")
+                        {
+                            Console.WriteLine($"\nID: {st.Id} FullName: {st.FullName} Age: {st.getAge}");
+                        }
+                    }
+                    break;
+                case '2':
+                    foreach (var st in Student)
+                    {
+                        if (st.EduType == "SMM")
+                        {
+                            Console.WriteLine($"\nID: {st.Id} FullName: {st.FullName} Age: {st.getAge}");
+                        }
+
+                    }
+                    break;
+                case '3':
+                    foreach (var st in Student)
+                    {
+                        if (st.EduType == "Python")
+                        {
+                            Console.WriteLine($"\nID: {st.Id} FullName: {st.FullName} Age: {st.getAge}");
+                        }
+
+                    }
+                    break;
+                case '4':
+                    foreach (var st in Student)
+                    {
+                        if (st.EduType == "Dizayn")
+                        {
+                            Console.WriteLine($"\nID: {st.Id} FullName: {st.FullName} Age: {st.getAge}");
+                        }
+
+                    }
+                    break;
+                default: Console.WriteLine("\nXato buyruq!"); break;
+            }
+        }
+        if (s == "3")
+        {
+            var n = "H";
+            Console.WriteLine("{-7 0}", n);
+            Console.WriteLine("№:\tIsm:\t\t11.07\t12.07\t13.07\t14.07");
+            for (int i = 0; i < 18; i++)
+            {
+                var ism = Student[i].FullName.Split();
+                Console.Write($"\n{Student[i].Id}){ism[0]} {ism[1][0]} -\t");
+                for (int j = 0; j < 4; j++)
+                {
+                    Console.Write($"{balls[i, j]}\t");
+                }
+            }
+        }
+        if (s == "0")
+        {
+            break;
         }
     }
 }
-for (int k = 0; k < 10; k++)
-{
-    Console.Write(names[k]);
-    Console.WriteLine(": " + birthdays[k]);
-}
+
+
