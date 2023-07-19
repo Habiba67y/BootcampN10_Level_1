@@ -1,42 +1,61 @@
-﻿////T1:
-//Console.WriteLine("Keling password yasaymiz:");
-//Console.WriteLine("Ha b'lsa {1} Yo'q bo'lsa {0}");
-//Console.Write("Sonlar bo'lsinmi: ");
-//byte son = Convert.ToByte(Console.ReadLine());
-//Console.Write("Harflarlar bo'lsinmi: ");
-//byte harf = Convert.ToByte(Console.ReadLine());
-//Console.Write("Simvollar bo'lsinmi: ");
-//byte simvol = Convert.ToByte(Console.ReadLine());
-//Console.Write("Password uzunligi: ");
-//int l = Convert.ToInt32(Console.ReadLine());
-//int i = 0;
-//string password = "";
-//Random r = new Random();
-//while (i < l)
-//{
-//    if (harf == 1)
-//    {
-//        if (i < l)
-//        {
-//            password += Convert.ToChar(r.Next(97, 122));
-//            i++;
-//        }
-//    }
-//    if (son == 1)
-//    {
-//        if (i < l)
-//        {
-//            password += Convert.ToChar(r.Next(48, 57));
-//            i++;
-//        }
-//    }
-//    if (simvol == 1)
-//    {
-//        if (i < l)
-//        {
-//            password += Convert.ToChar(r.Next(33, 47));
-//            i++;
-//        }
-//    }
-//}
-//Console.WriteLine($"\nPassword: {password}");
+﻿Console.WriteLine("Keling password yaratamiz!");
+Console.WriteLine("Ha bo'lsa - {1} yo'q bo'lsa - {0}");
+Console.Write("Katta harf bo'lsinmi: ");
+int kattaHarf = Convert.ToInt32(Console.ReadLine());
+Console.Write("Kichik harf bo'lsinmi: ");
+int kichikHarf = Convert.ToInt32(Console.ReadLine());
+Console.Write("Son bo'lsinmi: ");
+int son = Convert.ToInt32(Console.ReadLine());
+Console.Write("Simvol bo'lsinmi: ");
+int simvol = Convert.ToInt32(Console.ReadLine());
+Console.Write("Password uzunligi: ");
+int lengthOfPassword = Convert.ToInt32(Console.ReadLine());
+Random r = new Random();
+for (int i = 0; i < lengthOfPassword; i++)
+{
+    var t = r.Next(1, 5);
+    if (t == 1)
+    {
+        if (kattaHarf == 1)
+        {
+            Console.Write(Convert.ToChar(r.Next(65, 91)));
+        }
+        if (kattaHarf == 0)
+        {
+            i--;
+        }
+    }
+    if (t == 2)
+    {
+        if (kichikHarf == 1)
+        {
+            Console.Write(Convert.ToChar(r.Next(97, 123)));
+        }
+        if (kichikHarf == 0)
+        {
+            i--;
+        }
+    }
+    if (t == 3)
+    {
+        if (son == 1)
+        {
+            Console.Write(Convert.ToChar(r.Next(48, 58)));
+        }
+        if (son == 0)
+        {
+            i--;
+        }
+    }
+    if (t == 4)
+    {
+        if (simvol == 1)
+        {
+            Console.Write(Convert.ToChar(r.Next(33, 48)));
+        }
+        if (simvol == 0)
+        {
+            i--;
+        }
+    }
+}

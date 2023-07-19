@@ -10,7 +10,7 @@ while (c != "e")
     n1 = Convert.ToInt32(Console.ReadLine());
     if (c == "/" && n1 == 0)
     {
-        Console.WriteLine("son 0 ga bo'linmaydi")
+        Console.WriteLine("son 0 ga bo'linmaydi");
         Console.Write("Son kiriting: ");
         n1 = Convert.ToInt32(Console.ReadLine());
     }
