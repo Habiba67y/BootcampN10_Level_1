@@ -46,3 +46,4 @@ for (int k = 0; k < 10; k++)
     Console.Write(names[k]);
     Console.WriteLine(": " + birthdays[k]);
 }
+
