@@ -34,33 +34,36 @@ while (true)
 }
 Console.Write("Enter your age: ");
 var age = Console.ReadLine();
-if (Convert.ToInt32(age) < 18)
+if (age.All(char.IsDigit))
 {
-    Console.WriteLine(underAge.Replace(NameToken, name));
-}
-else if (Convert.ToInt32(age) > 90)
-{
-    Console.WriteLine(goldenAger.Replace(NameToken, name));
-}
-else
-{
-    var e = emails.ElementAt(0)
-        .Replace(NameToken, name)
-        .Replace(CompanyNameToken, CompanyName);
-    Console.WriteLine(e);
-    odamlarIsmi.AddLast(name);
-    e = emails.ElementAt(1)
-        .Replace(CompanyNameToken, CompanyName);
-    Console.WriteLine(e);
-    foreach (var flight in samalyotUchishlari)
+    if (Convert.ToInt32(age) < 18)
     {
-        if (flight.Value >= odamlarIsmi.Count)
+        Console.WriteLine(underAge.Replace(NameToken, name));
+    }
+    else if (Convert.ToInt32(age) > 90)
+    {
+        Console.WriteLine(goldenAger.Replace(NameToken, name));
+    }
+    else
+    {
+        var e = emails.ElementAt(0)
+            .Replace(NameToken, name)
+            .Replace(CompanyNameToken, CompanyName);
+        Console.WriteLine(e);
+        odamlarIsmi.AddLast(name);
+        e = emails.ElementAt(1)
+            .Replace(CompanyNameToken, CompanyName);
+        Console.WriteLine(e);
+        foreach (var flight in samalyotUchishlari)
         {
-            e = emails.ElementAt(2)
-                .Replace(TicketdateToken, Convert.ToString(flight.Key))
-                .Replace(CompanyNameToken, CompanyName);
-            Console.WriteLine(e);
-            break;
+            if (flight.Value >= odamlarIsmi.Count)
+            {
+                e = emails.ElementAt(2)
+                    .Replace(TicketdateToken, Convert.ToString(flight.Key))
+                    .Replace(CompanyNameToken, CompanyName);
+                Console.WriteLine(e);
+                break;
+            }
         }
     }
 }

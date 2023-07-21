@@ -44,6 +44,7 @@ int[,] balls = new int[,]
 };
 while (true)
 {
+    Console.WriteLine("\n1 - Talabalar ro'yhati\n2 - To'lovlar\n3 - Balllar\n4 - Talaba qo'shish\n5 - Talaba olish\n");
     string s = Console.ReadLine();
     if (!string.IsNullOrEmpty(s))
     {
@@ -59,7 +60,7 @@ while (true)
                     {
                         if (st.EduType == "DotNET")
                         {
-                            Console.WriteLine($"\nID: {st.Id} FullName: {st.FullName} Age: {st.getAge}");
+                            Console.WriteLine($"\nID: {st.Id} FullName: {st.FullName} Age: {st.getAge()}");
                         }
                     }
                     break;
@@ -68,7 +69,7 @@ while (true)
                     {
                         if (st.EduType == "SMM")
                         {
-                            Console.WriteLine($"\nID: {st.Id} FullName: {st.FullName} Age: {st.getAge}");
+                            Console.WriteLine($"\nID: {st.Id} FullName: {st.FullName} Age: {st.getAge()}");
                         }
 
                     }
@@ -78,7 +79,7 @@ while (true)
                     {
                         if (st.EduType == "Python")
                         {
-                            Console.WriteLine($"\nID: {st.Id} FullName: {st.FullName} Age: {st.getAge}");
+                            Console.WriteLine($"\nID: {st.Id} FullName: {st.FullName} Age: {st.getAge()}");
                         }
 
                     }
@@ -88,7 +89,7 @@ while (true)
                     {
                         if (st.EduType == "Dizayn")
                         {
-                            Console.WriteLine($"\nID: {st.Id} FullName: {st.FullName} Age: {st.getAge}");
+                            Console.WriteLine($"\nID: {st.Id} FullName: {st.FullName} Age: {st.getAge()}");
                         }
 
                     }
@@ -128,6 +129,7 @@ while (true)
                         item.GetTable("Dizayn");
                     }
                     break;
+                default : Console.WriteLine("Xato buyruq");break;
             }
         }
         if (s == "3")
@@ -142,6 +144,35 @@ while (true)
                 }
                 Console.WriteLine();
             }
+        }
+        if (s == "4")
+        {
+            Console.Write("F.I.O: ");
+            string fio = Console.ReadLine();
+            Console.Write("Education type: ");
+            string edutype = Console.ReadLine();
+            Student.Add(new student
+            {
+                Id = Student.Last().Id + 1,
+                FullName = fio,
+                BirthDay = DateTime.Now,
+                EduType = edutype
+            });
+        }
+        if (s == "5")
+        {
+            Console.WriteLine("Enter your ID: ");
+            int id = Convert.ToInt32(Console.ReadLine());
+            student item = new student();
+            foreach (var st in Student)
+            {
+                if (st.Id == id)
+                {
+                    item = st;
+                }
+            }
+            var index=Student.IndexOf(item);
+            Student.RemoveAt(index);
         }
         if (s == "0")
         {
