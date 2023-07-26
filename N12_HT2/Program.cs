@@ -9,7 +9,7 @@ Console.Write("subject: ");
 email.Subject = Console.ReadLine();
 Console.Write("content: ");
 email.Content = Console.ReadLine();
-Console.WriteLine(email.ToString(email));
+Console.WriteLine(email.ToString());
 public class Email
 {
     public string _to;
@@ -76,7 +76,7 @@ public class Email
             }
         }
     }
-    public string ToString(Email email)
+    public override string ToString()
     {
         return $"To: {To}\nFrom: {From}\nSubject: {Subject}\nContent: {Content}";
     }

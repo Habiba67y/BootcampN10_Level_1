@@ -21,7 +21,7 @@ public class User
     public string fullName
     {
         get { return $"{ism} {familiya} {sharif}";  }
-        set { value = $"{ism} {familiya} {sharif}"; }
+        set { value = $"{ism} {familiya} {sharif}";
     }
     public override bool Equals(object? obj)
     {
