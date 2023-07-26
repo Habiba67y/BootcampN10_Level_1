@@ -21,7 +21,13 @@ public class User
     public string fullName
     {
         get { return $"{ism} {familiya} {sharif}";  }
-        set { value = $"{ism} {familiya} {sharif}";
+        set 
+        {
+            var f = value.Split();
+            ism = f[0];
+            familiya = f[1];
+            sharif = f[2];
+        }
     }
     public override bool Equals(object? obj)
     {
