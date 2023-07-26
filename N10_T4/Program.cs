@@ -11,7 +11,7 @@
 public class BlogManagaer
 {
  //   public List<BlogPost> blogPosts { get; set; }
-    public void Analyze(List<BlogPost> blogPost)
+    public void Analyze(List<BlogPost> blogPosts)
     {
         
     }
