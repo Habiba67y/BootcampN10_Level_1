@@ -10,26 +10,54 @@
 25,
 12
 };
-var a = new Dictionary<int, int>();
-for (int i = 0; i < ages.Length; i++)
+for (int i = 0; i < ages.Length - 1; i++)
 {
-    var count = 0;
-    for (int j = 0; j < ages.Length; j++)
+    for (int j = i + 1; j < ages.Length; j++)
     {
-        if (ages[i] == ages[j])
+        if (ages[i] > ages[j])
         {
-            count++;
+            var t = ages[i];
+            ages[i] = ages[j];
+            ages[j] = t;
         }
     }
-    if (!a.ContainsKey(ages[i]))
-    {
-        a.Add(ages[i], count);
-    }
 }
-foreach (var age in a)
+int count = 1;
+for (int i = 0; i < ages.Length - 1; i++)
 {
-    if (age.Value != 1)
+    if (ages[i] == ages[i + 1])
     {
-        Console.WriteLine($"{age.Key} - {age.Value}");
+        count++;
+    }
+    else
+    {
+        if (count > 1)
+        {
+            Console.WriteLine($"{ages[i]} - {count}");
+            count = 1;
+        }
     }
 }
+//var a = new Dictionary<int, int>();
+//for (int i = 0; i < ages.Length; i++)
+//{
+//    var count = 0;
+//    for (int j = 0; j < ages.Length; j++)
+//    {
+//        if (ages[i] == ages[j])
+//        {
+//            count++;
+//        }
+//    }
+//    if (!a.ContainsKey(ages[i]))
+//    {
+//        a.Add(ages[i], count);
+//    }
+//}
+//foreach (var age in a)
+//{
+//    if (age.Value != 1)
+//    {
+//        Console.WriteLine($"{age.Key} - {age.Value}");
+//    }
+//}

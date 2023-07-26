@@ -9,10 +9,7 @@ Console.Write("subject: ");
 email.Subject = Console.ReadLine();
 Console.Write("content: ");
 email.Content = Console.ReadLine();
-Console.WriteLine(email.ToString("t"));
-Console.WriteLine(email.ToString("f"));
-Console.WriteLine(email.ToString("s"));
-Console.WriteLine(email.ToString("c"));
+Console.WriteLine(email.ToString(email));
 public class Email
 {
     public string _to;
@@ -24,7 +21,6 @@ public class Email
         get { return _to; }
         set
         {
-            //           var emailRegex = new Regex("^((\\w+([-+.]\\w+)*@\\w+([-.]\\w+)*\\.\\w+([-.]\\w+)*)\\s*[;,.]{0,1}\\s*)+$");
             if (Regex.IsMatch(value, "^((\\w+([-+.]\\w+)*@\\w+([-.]\\w+)*\\.\\w+([-.]\\w+)*)\\s*[;,.]{0,1}\\s*)+$"))
             {
                 _to = value;
@@ -40,7 +36,6 @@ public class Email
         get { return _from; }
         set
         {
-            //         var emailRegex = new Regex("^((\\w+([-+.]\\w+)*@\\w+([-.]\\w+)*\\.\\w+([-.]\\w+)*)\\s*[;,.]{0,1}\\s*)+$");
             if (Regex.IsMatch(value, "^((\\w+([-+.]\\w+)*@\\w+([-.]\\w+)*\\.\\w+([-.]\\w+)*)\\s*[;,.]{0,1}\\s*)+$"))
             {
                 _from = value;
@@ -81,25 +76,8 @@ public class Email
             }
         }
     }
-    public string ToString(string str)
+    public string ToString(Email email)
     {
-        switch (str)
-        {
-            case "t":
-                return To;
-                break;
-            case "f":
-                return From;
-                break;
-            case "s":
-                return Subject;
-                break;
-            case "c":
-                return Content;
-                break;
-            default:
-                return "wrong command";
-                break;
-        }
+        return $"To: {To}\nFrom: {From}\nSubject: {Subject}\nContent: {Content}";
     }
 }
