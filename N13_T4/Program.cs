@@ -49,15 +49,13 @@ for (int i = 0; i < standartSavol.Count(); i++)
         standartSavol.Insert(i+1, qiyinSavol[index1]);
         standartJavob.Insert(i+1, qiyinJavob[index1]);
         index1++;
-  //      i--;
-        countTrue = 0;
+          countTrue = 0;
     }
     if (countFalse == 2)
     {
         standartSavol.Insert(i+1, osonSavol[index2]);
         standartJavob.Insert(i+1, osonJavob[index2]);
         index2++;
-   //     i--;
         countFalse = 0;
     }
 }
