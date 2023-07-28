@@ -1,5 +1,5 @@
 ﻿using System.Text;
-
+//japanese characterlar print bo'lmadi encoding decoding qilsam ham😓
 string parol = "qwerty!2345";
 var languages = new Dictionary<string, List<string>>();
 languages["en"] = new List<string>()
