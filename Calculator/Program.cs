@@ -1,12 +1,8 @@
 ﻿using System.Collections;
 using System.ComponentModel.Design;
 var a = Console.ReadLine();
-var b = a.Split('(',')');
-foreach (var c in b)
-{
-    Console.WriteLine(c);
-}
-
+var m = new misol();
+Console.WriteLine(m.hisoblash(a));
 public class misol
 {
     public float hisoblash(string a)
