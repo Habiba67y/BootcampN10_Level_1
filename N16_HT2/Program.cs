@@ -1,5 +1,6 @@
 ﻿using N16_HT2;
-//rosti bu misolni shartiga tushunmadim
+//rosti bu misolni shartiga tushunmadim, tushunganimcha qildim:
+
 Console.Write("Device name: ");
 var shs = new SmartHomeService(Console.ReadLine());
 shs.Activate();
