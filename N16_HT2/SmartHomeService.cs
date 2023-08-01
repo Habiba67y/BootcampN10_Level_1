@@ -8,7 +8,7 @@ namespace N16_HT2
 {
     internal class SmartHomeService
     {
-        private List<float> ct = new List<float>();
+        private List<Temperature> temperatures = new List<Temperature>();
         private bool _isActivated = false;
         private float _currentTemperature;
         public bool IsActivated { get => _isActivated; }
@@ -16,7 +16,7 @@ namespace N16_HT2
         public float CurrentTemperature { set
             {
                 _currentTemperature = value;
-                ct.Add(_currentTemperature);
+                temperatures.Add(new Temperature(ExpectedTemperature, _currentTemperature));
             }
         }
         public float ExpectedTemperature { get; set; }
@@ -32,9 +32,9 @@ namespace N16_HT2
         {
             if (_isActivated == true)
             {
-                foreach (var t in ct)
+                foreach (var t in temperatures)
                 {
-                    Console.WriteLine($"Expected temperature: {ExpectedTemperature} - Current Temperature: {t}");
+                    Console.WriteLine($"Expected temperature: {t.et} <-> Current Temperature: {t.ct}");
                 }
             }
         }
