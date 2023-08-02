@@ -8,12 +8,14 @@ namespace N17_HT2
 {
     internal class Chat
     {
-        public List<ChatMessage> Messages  = new List<ChatMessage>();
-        public void Add(string content)
+        public List<ChatMessage> Messages = new List<ChatMessage>();
+        public Guid Add(string content)
         {
-            if (!string.IsNullOrWhiteSpace(content))
+            if (MessageValidator.IsValid(content))
             {
-                Messages.Add(new ChatMessage(content));
+                var m = new ChatMessage(content);
+                Messages.Add(m);
+                return m.Id;
             }
             else
             {
@@ -26,12 +28,12 @@ namespace N17_HT2
             {
                 if (m.Id == id)
                 {
-                    if (!string.IsNullOrWhiteSpace(content))
+                    if (MessageValidator.IsValid(content))
                     {
                         Messages.Remove(m);
-                        var m1 = new ChatMessage(content);
-                        m1.Copy(m);
-                        Messages.Add(m);
+                        var m1 = new ChatMessage(m);
+                        m1.Content = content;
+                        Messages.Add(m1);
                         return;
                     }
                     else
@@ -44,21 +46,10 @@ namespace N17_HT2
         }
         public void Display()
         {
-            for (int i = 0; i < Messages.Count() - 1; i++)
+            for (int i = 0; i < Messages.Count(); i++)
             {
-                for (int j = i + 1; j < Messages.Count; j++)
-                {
-                    if (Messages[i].SendTime > Messages[j].SendTime)
-                    {
-                        var temp = Messages[i];
-                        Messages[i] = Messages[j];
-                        Messages[j] = temp;
-                    }
-                }
                 Console.WriteLine($"Content: {Messages[i].Content}\nSentTime: {Messages[i].SendTime}");
             }
-            Console.WriteLine($"Content: {Messages[Messages.Count()-1].Content}\nSentTime: {Messages[Messages.Count()-1].SendTime}");
         }
-
     }
 }

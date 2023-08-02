@@ -18,12 +18,12 @@ namespace N17_HT2
             SendTime = DateTime.Now;
             Id  = Guid.NewGuid();
         }
-        public void Copy(ChatMessage cm)
+        public ChatMessage(ChatMessage cm)
         {
-            cm.Id = Id;
-            cm.Content = Content;
-            cm.SendTime = SendTime;
-            cm.EditedTime = DateTime.Now;
+            Id = cm.Id;
+            Content = cm.Content;
+            SendTime = cm.SendTime;
+            EditedTime = DateTime.Now;
         }
     }
 }
