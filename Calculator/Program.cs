@@ -3,6 +3,62 @@ using System.ComponentModel.Design;
 var a = Console.ReadLine();
 var m = new misol();
 Console.WriteLine(m.hisoblash(a));
+//while (true)
+//{
+//    if (a.Contains("(") && a.Contains(")"))
+//    {
+//        int index1 = 0;
+//        int index2 = 0;
+//        var b = "";
+//        var c = "";
+//        for (int i = 0; i < a.Length; i++)
+//        {
+//            if (a[i] == '(')
+//            {
+//                index1 = i + 1;
+//            }
+//            if (a[i] == ')')
+//            {
+//                index2 = i - 1;
+//            }
+//        }
+//        for (int i = 0; i < a.Length; i++)
+//        {
+//            if (i < index1 - 1)
+//            {
+//                b += a[i];
+//            }
+//            else
+//            {
+//                c += a[i];
+//            }
+//        }
+//        if (m.hisoblash(c) >= 0)
+//        {
+//            b += Convert.ToString(m.hisoblash(c));
+//        }
+//        else
+//        {
+//            if (b[b.Length - 1] == '+')
+//            {
+//                b.Remove(b[b.Length - 1]);
+//                b += '-';
+//                b += Convert.ToString((-1) * m.hisoblash(c));
+//            }
+//            if (b[b.Length - 1] == '-')
+//            {
+//                b.Remove(b[b.Length - 1]);
+//                b += '+';
+//                b += Convert.ToString((-1) * m.hisoblash(c));
+//            }
+//            if (b[b.Length - 1] == '*')
+//            {
+//                b += Convert.ToString((-1) * m.hisoblash(c));
+//                b = "-" + b;
+//            }
+//        }
+//    }
+//}
 public class misol
 {
     public float hisoblash(string a)
@@ -10,7 +66,11 @@ public class misol
         var b = "";
         var c = new ArrayList();
         var d = new ArrayList();
-        foreach (var i in a)
+        if (a[0] == '-')
+        {
+            b = "-";
+        }
+        foreach(var i in a)
         {
             if (Char.IsDigit(i) || i == '.')
             {
@@ -18,9 +78,12 @@ public class misol
             }
             else
             {
-                c.Add(float.Parse(b));
-                c.Add(i);
-                b = "";
+                if (a[0] != '-')
+                {
+                    c.Add(float.Parse(b));
+                    c.Add(i);
+                    b = "";
+                }
             }
         }
         c.Add(float.Parse(b));
