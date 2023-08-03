@@ -11,12 +11,9 @@ namespace N18_HT1
         private Dictionary<string, int> Cashe = new Dictionary<string, int>();
         public int Get(string key)
         {
-            foreach (var c in Cashe)
+            if (Cashe.ContainsKey(key))
             {
-                if (c.Key.Equals(key, StringComparison.OrdinalIgnoreCase))
-                {
-                    return c.Value;
-                }
+                return Cashe[key];
             }
             return default(int);
         }

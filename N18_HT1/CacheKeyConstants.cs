@@ -10,15 +10,36 @@ namespace N18_HT1
     {
         public static string Max(List<int> orders)
         {
-             return Convert.ToString(orders.Max()) + "-max";
+            var max = 0;
+            foreach (var item in orders)
+            {
+                if (item > max)
+                {
+                    max = item;
+                }
+            }
+             return Convert.ToString(max) + "-max";
         }
         public static string Min(List<int> orders) 
         {
-            return Convert.ToString(orders.Min()) + "-min";
+            var min = orders[0];
+            foreach (var item in orders)
+            {
+                if (item < min)
+                {
+                    min = item;
+                }
+            }
+            return Convert.ToString(min) + "-max";
         }
         public static string Sum(List<int> orders)
         {
-            return Convert.ToString(orders.Sum()) + "-sum";
+            var sum = 0;
+            foreach (var item in orders)
+            {
+                sum += item;
+            }
+            return Convert.ToString(sum) + "-max"; 
         }
     }
 }

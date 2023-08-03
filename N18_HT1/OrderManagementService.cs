@@ -12,18 +12,54 @@ namespace N18_HT1
         public OrderCacheService cashe = OrderCacheService.GetInstance();
         public int Max()
         {
-            cashe.Set(CacheKeyConstants.Max(Orders), Orders.Max());
-            return cashe.Get(CacheKeyConstants.Max(Orders));
+            var key = CacheKeyConstants.Max(Orders);
+            if (cashe.Get(key) != default(int))
+            {
+                return cashe.Get(key);
+            }
+            var max = 0;
+            foreach (var item in Orders)
+            {
+                if (item > max)
+                {
+                    max = item;
+                }
+            }
+            cashe.Set(CacheKeyConstants.Max(Orders), max);
+            return max;
         }
         public int Min()
         {
-            cashe.Set(CacheKeyConstants.Min(Orders), Orders.Min());
-            return cashe.Get(CacheKeyConstants.Min(Orders));
+            var key = CacheKeyConstants.Min(Orders);
+            if (cashe.Get(key) != default(int))
+            {
+                return cashe.Get(key);
+            }
+            var min = Orders[0];
+            foreach (var item in Orders)
+            {
+                if (item < min)
+                {
+                    min = item;
+                }
+            }
+            cashe.Set(CacheKeyConstants.Max(Orders), min);
+            return min;
         }
         public int Sum()
         {
-            cashe.Set(CacheKeyConstants.Sum(Orders), Orders.Sum());
-            return cashe.Get(CacheKeyConstants.Sum(Orders));
+            var key = CacheKeyConstants.Sum(Orders);
+            if (cashe.Get(key) != default(int))
+            {
+                return cashe.Get(key);
+            }
+            var sum = 0;
+            foreach (var item in Orders)
+            {
+                sum += item;
+            }
+            cashe.Set(CacheKeyConstants.Max(Orders), sum);
+            return sum;
         }
         public void Add(int amount)
         {
