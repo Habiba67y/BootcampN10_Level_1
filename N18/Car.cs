@@ -10,8 +10,13 @@ namespace N18
     {
         public string Brand { get; init; }
         public int Year { get; init; }
-        public string Color { get; init; }
-        public virtual void Show()
+        public string Color { get; set; }
+        
+        public virtual string Show()
+        {
+            return $"Brand: {Brand}\nYear: {Year}; Color: {Color}";    
+        }
+        public abstract void Drive();
 
     }
 }
