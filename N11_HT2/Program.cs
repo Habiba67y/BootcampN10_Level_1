@@ -14,7 +14,7 @@ mp.tracks.Add(new Track()
     name = "Say it right",
     author = "Nelly Furtado",
 });
-mp.currentTrack = mp.tracks[0];
+mp.currentTrack= mp.tracks[0];
 while (true)
 {
     Console.Write("\nChoose a command:\n\nNext - n\nPrevious - p\nPause - pause\nPlay - play\nExit - e\n\n=> ");
