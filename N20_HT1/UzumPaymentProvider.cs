@@ -16,9 +16,9 @@ namespace N20_HT1
             destinationCard.Balance += amount;
 
         }
-        public UzumPaymentProvider(int transferInterest)
+        public UzumPaymentProvider()
         { 
-            TransferInterest = transferInterest;
+            TransferInterest = 1;
         }
     }
 }

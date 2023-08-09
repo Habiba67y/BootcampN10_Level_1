@@ -15,9 +15,9 @@ namespace N20_HT1
             destinationCard.Balance += amount;
 
         }
-        public PaymePaymentProvider(int transferInterest)
+        public PaymePaymentProvider()
         {
-            TransferInterest = transferInterest;
+            TransferInterest = 1;
         }
     }
 }

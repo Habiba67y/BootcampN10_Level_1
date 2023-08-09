@@ -1,6 +1,6 @@
 ﻿using N20_HT1;
 
-var provider = new UzumPaymentProvider(1);
+var provider = new UzumPaymentProvider();
 var onlineMarket = new OnlineMarket(provider);
 var destinationCard = new KapitalUzcard("Qandaydir bank");
 onlineMarket.destinationCard = destinationCard;
