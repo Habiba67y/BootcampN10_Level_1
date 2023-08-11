@@ -1,6 +1,6 @@
 ﻿using N22_T2.Model;
 
-var priorityQueue = new PriorityQueue<ITaskEvent>();
+var priorityQueue = new  PriorityQueue<ITaskEvent>();
 
 priorityQueue.Enqueue(new TaskItem("Course", "Finish udemy course", 8));
 priorityQueue.Enqueue(new TaskItem("Homework", "Do homework", 1));
