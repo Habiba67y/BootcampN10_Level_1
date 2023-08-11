@@ -6,7 +6,13 @@ using System.Threading.Tasks;
 
 namespace TaskManagement.Model
 {
-    internal class Developer
+    public class Developer : User
     {
+        public List<Task> AssignedTasks { get; set; }
+        public Developer(string username, string password)
+            : base(username, password, (int)UserRole.Developer)
+        {
+            AssignedTasks = new List<Task>();
+        }
     }
 }

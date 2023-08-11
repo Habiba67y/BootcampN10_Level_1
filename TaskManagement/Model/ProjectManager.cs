@@ -6,7 +6,11 @@ using System.Threading.Tasks;
 
 namespace TaskManagement.Model
 {
-    internal class ProjectManager
+    public class ProjectManager: User
     {
+        public ProjectManager(string username, string password)
+            :base(username, password, (int)UserRole.ProjectManager)
+        {
+        }
     }
 }
