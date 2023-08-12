@@ -1,0 +1,24 @@
+﻿using N23_T1;
+
+var rs = new RegistrationService();
+Console.Write("Email: ");
+var e1 = Console.ReadLine();
+Console.Write("Password: ");
+var p1 = Console.ReadLine();
+rs.Register(e1, p1);
+Console.Write("Email: ");
+var e2 = Console.ReadLine();
+Console.Write("Password: ");
+var p2 = Console.ReadLine();
+rs.Register(e2, p2);
+Console.Write("Email: ");
+var e3 = Console.ReadLine();
+Console.Write("Password: ");
+var p3 = Console.ReadLine();
+rs.Register(e3, p3);
+rs.Show();
+Console.Write("Email: ");
+var e4 = Console.ReadLine();
+Console.Write("Password: ");
+var p4 = Console.ReadLine();
+Console.WriteLine(rs.Login(e4, p4));
