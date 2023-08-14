@@ -70,19 +70,22 @@ namespace N22_HT2.Model
         }
         public string GetOverallReview()
         {
-            if (_reviewList.All(review => review.Star == 5))
-            {
-                return "Great news! All reviews for this product are 5-star ratings.";
-            }
-            if (_reviewList.Any(review => review.Star == 1))
-            {
-                return _reviewList.Where(review => review.Star == 1).ToList().First().Message;
-            }
             if (_reviewList.Count() == 0)
             {
                 return "Be the first to leave a review for this product";
             }
-            return string.Empty;
+            else
+            {
+                if (_reviewList.All(review => review.Star == 5))
+                {
+                    return "Great news! All reviews for this product are 5-star ratings.";
+                }
+                if (_reviewList.Any(review => review.Star == 1))
+                {
+                    return _reviewList.Where(review => review.Star == 1).ToList().First().Message;
+                }
+                return string.Empty;
+            }
         }
         public IEnumerator<TReview> GetEnumerator()
         {
