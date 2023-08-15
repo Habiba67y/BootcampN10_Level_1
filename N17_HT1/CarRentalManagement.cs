@@ -16,7 +16,7 @@ namespace N17_HT1
         {
             Cars.Add(car);
         }
-        public void Rent(string brandName)
+        public async void Rent(string brandName)
         {
             foreach (var c in Cars)
             {
@@ -24,6 +24,7 @@ namespace N17_HT1
                 {
                     c.RentStartTime = DateTime.Now;
                     c.isRented = true;
+                    await Task.Delay(1000 * c.RentStartTime.Second);
                     return;
                 }
             }
@@ -39,12 +40,12 @@ namespace N17_HT1
                     if (car is Bmw bmw)
                     {
                         bmw.Balance = bmw.RentPricePerHour * (DateTime.Now - bmw.RentStartTime).Seconds;
-//Console.WriteLine($"Bmw: {(DateTime.Now - bmw.RentStartTime).Seconds} secund - return - {(DateTime.Now - bmw.RentStartTime).Seconds} * {bmw.RentPricePerHour}: {bmw.Balance}\n");
+                        Console.WriteLine(bmw.Balance);
                     }
                     if (car is Audi audi)
                     {
                         audi.Balance = audi.RentPricePerHour * (DateTime.Now - audi.RentStartTime).Seconds;
-//Console.WriteLine($"Audi: {(DateTime.Now - audi.RentStartTime).Seconds} secund - return - {(DateTime.Now - audi.RentStartTime).Seconds} * {audi.RentPricePerHour}: {audi.Balance}\n");
+                        Console.WriteLine(audi.Balance);
                     }
                     return;
                 }

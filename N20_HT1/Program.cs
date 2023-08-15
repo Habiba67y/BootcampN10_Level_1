@@ -36,3 +36,4 @@ Console.Write("Nechta olasiz: ");
 number = Convert.ToInt32(Console.ReadLine());
 onlineMarket.Buy(nameOfProduct, number, card);
 Console.WriteLine($"Kartada qolgan pul: {card.Balance}");
+Console.WriteLine(onlineMarket.destinationCard.Balance);

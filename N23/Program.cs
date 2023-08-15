@@ -1,7 +1,6 @@
 ﻿using N23;
 using System.Numerics;
 
-
 List<Team> teams = new List<Team>()
 {
     new Team() { Id = 1, ClubName = "Barselona", City = "Ispaniya" },

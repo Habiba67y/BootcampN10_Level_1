@@ -19,6 +19,6 @@ crm.Rent(audi1.BrandName);
 crm.Rent(audi2.BrandName);
 crm.Return(bmw2);
 crm.Return(audi2);
-crm.Return(bmw1); // nimagadir bmw1 va audi1 larda return ni 0 qilib qo'yyapti, misolni shartiga qarab qilishga harakat qildim
+crm.Return(bmw1); 
 crm.Return(audi1);
 crm.CalculateBalance();
