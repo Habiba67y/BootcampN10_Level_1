@@ -2,12 +2,13 @@
 
 var userService = new UserService();
 var userCredentialService = new UserCredentialService();
-userService.Add("Falonchi", "Falonchiyev", "falonchi@gmail.com");
-userService.Add("Palonchi", "Palonchiyev", "palonchi@gmail.com");
-userService.Add("Pistonchi", "Pistonchiyev", "pistonchi@gmail.com");
-userService.Add("G'ishmat", "G'ishmatov", "g'ishmat@gmail.com");
-userService.Add("Eshmat", "Eshmat", "eshmat@gmail.com");
-userService.Add("Toshmat", "Toshmatov", "toshmat@gmail.com");
+var register = new RegistrationService(userService, userCredentialService);
+register.Register("Falonchi", "Falonchiyev", "falonchi@gmail.com", "qwertYuio1");
+register.Register("Palonchi", "Palonchiyev", "palonchi@gmail.com", "asdfghJ5");
+register.Register("Pistonchi", "Pistonchiyev", "pistonchi@gmail.com", "zxcvbnN25");
+register.Register("G'ishmat", "G'ishmatov", "g'ishmat@gmail.com", "plmkijhK25");
+register.Register("Eshmat", "Eshmat", "eshmat@gmail.com", "DERTGBHJjhg5");
+register.Register("Toshmat", "Toshmatov", "toshmat@gmail.com", "zxcvbnmjgU6");
 userService.Get(1, 6).ForEach(Console.WriteLine);
 Console.Write("\nKeyword for search: ");
 var keyword = Console.ReadLine();
