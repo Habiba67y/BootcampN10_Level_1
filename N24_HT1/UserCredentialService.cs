@@ -29,9 +29,6 @@ namespace N24_HT1
         {
             return userCredentials.FirstOrDefault(uc => uc.UserId == userId);
         }
-        public UserCredentialService(IUserService userService)
-        {
-            _userService = userService;
-        }
+        
     }
 }

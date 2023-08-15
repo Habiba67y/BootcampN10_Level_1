@@ -1,7 +1,7 @@
 ﻿using N24_HT1;
 
 var userService = new UserService();
-var userCredentialService = new UserCredentialService(userService);
+var userCredentialService = new UserCredentialService();
 userService.Add("Falonchi", "Falonchiyev", "falonchi@gmail.com");
 userService.Add("Palonchi", "Palonchiyev", "palonchi@gmail.com");
 userService.Add("Pistonchi", "Pistonchiyev", "pistonchi@gmail.com");
