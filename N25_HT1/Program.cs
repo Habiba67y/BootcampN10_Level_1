@@ -1,0 +1,22 @@
+﻿using N25_HT1;
+
+var productService = new ProductServcie();
+var paymentService = new PaymentService();
+var orderServcie = new OrderService(productService, paymentService);
+var id1 = productService.Add(new Laptop("laptopName1", "qandaydir desciption", false, 2400, "Lenovo", "qandaydir model1"));
+var id2 = productService.Add(new Laptop("laptopName2", "qandaydir desciption", false, 3600, "Dell", "qandaydir model2"));
+var id3 = productService.Add(new Laptop("laptopName3", "qandaydir desciption", false, 2500, "Asus", "qandaydir model3"));
+var id4 = productService.Add(new Laptop("laptopName4", "qandaydir desciption", false, 6300, "Apple", "qandaydir model4"));
+var id5 = productService.Add(new Chair("chair1", "yaxshi stul", false, 1200, 20, "yog'och"));
+var id6 = productService.Add(new Chair("chair2", "yomon stul", false, 3500, 80, "yo'g'och"));
+var id7 = productService.Add(new Chair("chair3", "zo'r stul", false, 6500, 50, "yog'och"));
+var id8 = productService.Add(new Chair("chair4", "xullas bo'ladi", false, 0, 60, "yog'och"));
+var id9 = productService.Add(new N25_HT1.Monitor("monitor1", "katta", false, 5600, 15, 25)); 
+var id10 = productService.Add(new N25_HT1.Monitor("monitor2", "kichik", false, 6000, 15, 25));
+var id11 = productService.Add(new N25_HT1.Monitor("monitor3", "baland", false, 6500, 15, 25));
+var id12 = productService.Add(new N25_HT1.Monitor("monitor4", "past", false, 6600, 15, 25));
+productService.GetFilterData().ForEach(Console.WriteLine);
+var filter = new ProductFilterModel(null, "Chair");
+var card = new DebitCard("7845120", 1_000_000);
+Console.WriteLine(orderServcie.Order(filter, card));
+Console.WriteLine(orderServcie.Order(id1, card));
