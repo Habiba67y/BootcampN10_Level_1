@@ -1,4 +1,5 @@
-﻿using System;
+﻿using N29.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace N29.Models
 {
-    public class Department
+    public class Department: IDepartmentEmployee
     {
         public int Id { get; set; }
         public string Name { get; set; }

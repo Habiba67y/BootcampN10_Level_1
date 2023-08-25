@@ -12,62 +12,45 @@ namespace N29.Service
 {
     public class HumanResourceManager : IHumanResourceManager
     {
-        private List<Department> departments = new List<Department>();
-        private List<Employee> employees = new List<Employee>();
+        private FileService<Department> departments = new FileService<Department>();
+        private FileService<Employee> employees = new FileService<Employee>();
         public void AddDepartment(Department department)
         {
-            departments.Add(department);
+            var d = new List<Department>();
+            d.Add(department);
+            departments.Add(d);
         }
 
         public void AddEmployee(Employee employee)
         {
-            employees.Add(employee);
+            var e = new List<Employee>();
+            e.Add(employee);
+            employees.Add(e);
         }
 
         public void EditDepartments(Department department)
         {
-            var depart = departments.FirstOrDefault(d => d.Id == department.Id);
-            if (depart != null)
-            {
-                depart.Name = department.Name;
-                depart.WorkerLimit = department.WorkerLimit;
-                depart.SalaryLimit = department.SalaryLimit;
-                depart.Employees = department.Employees;
-            }
+            departments.Edit(department);
         }
 
         public void EditEmployee(Employee employee)
         {
-            var empl = employees.FirstOrDefault(e => e.Id == employee.Id);
-            if (empl != null)
-            {
-                empl.FirstName = employee.FirstName;
-                empl.LastName = employee.LastName;
-                empl.FullName = employee.FullName;
-                empl.Position = employee.Position;
-                empl.Salary = employee.Salary;
-                empl.DepartmentId = employee.DepartmentId;
-                empl.No = employee.No;
-            }
+            employees.Edit(employee);
         }
 
-        public Department FindDepartment(string name)
+        public Department FindDepartment(int Id)
         {
-            return departments.FirstOrDefault(d => d.Name.Equals(name, StringComparison.OrdinalIgnoreCase));
+            return departments.Get(Id);
         }
 
         public List<Department> GetDepartments()
         {
-            return departments;
+            return departments.GetValues();
         }
 
         public void RemoveEmployee(int Id)
         {
-            var employee = employees.FirstOrDefault(e => e.Id == Id);
-            if (employee != null)
-            {
-                employees.Remove(employee);    
-            }
+            employees.Remove(employees.Get(Id));
         }
     }
 }

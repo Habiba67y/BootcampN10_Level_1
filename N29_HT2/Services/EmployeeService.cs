@@ -62,7 +62,7 @@ namespace N29_HT2.Services
                     "our policies and guidelines. If you have any questions or concerns, please do " +
                     "not hesitate to reach out to us.\r\n\r\nThank you for your cooperation and adherence " +
                     "to our policies.\r\n\r\nBest regards".Replace("{{Employee}}", x));
-                Console.WriteLine($"Office policies emaili jo'natildi");
+                Console.WriteLine($"{x}ga Office policies emaili jo'natildi");
                 return result;
             });
             Task.WaitAll(contractText.Select(x => x.AsTask()).ToArray());

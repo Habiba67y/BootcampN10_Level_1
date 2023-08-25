@@ -1,4 +1,5 @@
 ﻿using N29.Enum;
+using N29.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace N29.Models
 {
-    public class Employee
+    public class Employee: IDepartmentEmployee
     {
         public int Id { get; set; }
         public string FirstName { get; set; }

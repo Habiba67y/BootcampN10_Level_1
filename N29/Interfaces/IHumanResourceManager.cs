@@ -15,6 +15,6 @@ namespace N29.Interfaces
         void AddEmployee(Employee employee);
         void RemoveEmployee(int Id);
         void EditEmployee(Employee employee);
-        Department FindDepartment(string name);
+        Department FindDepartment(int Id);
     }
 }
