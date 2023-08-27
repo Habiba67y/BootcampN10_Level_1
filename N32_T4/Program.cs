@@ -1,0 +1,25 @@
+﻿using N32_T4;
+
+var optimizedMusicService = new OptimizedMusicService();
+var music1 = new Music("name1", "singer1");
+var music2 = new Music("name2", "singer2");
+var music3 = new Music("name3", "singer3");
+var music4 = new Music("name2", "singer2");
+optimizedMusicService.Add(music1);
+optimizedMusicService.Add(music2);
+optimizedMusicService.Add(music3);
+optimizedMusicService.Add(music4);
+optimizedMusicService.CurrentMusic = music1;
+optimizedMusicService.DisplayCurrentSong();
+optimizedMusicService.SwitchNext();
+Console.WriteLine("next: ");
+optimizedMusicService.DisplayCurrentSong();
+optimizedMusicService.SwitchNext();
+Console.WriteLine("next: ");
+optimizedMusicService.DisplayCurrentSong();
+optimizedMusicService.SwitchNext();
+Console.WriteLine("next: ");
+optimizedMusicService.DisplayCurrentSong();
+optimizedMusicService.SwitchPrevious();
+Console.WriteLine("previous: ");
+optimizedMusicService.DisplayCurrentSong();
