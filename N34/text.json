@@ -1,0 +1,40 @@
+[
+    {
+        "Person": {
+            "Id": 1,
+            "FirstName": "Pistonchi",
+            "LastName": "Familiya"
+        },
+        "history": [
+            {
+                "PersonId": 1,
+                "Activity": "Falonchi qo\u0027shildi",
+                "Time": "2023-08-29T18:35:50.47576+05:00"
+            },
+            {
+                "PersonId": 1,
+                "Activity": "Falonchi Pistonchi ga yangilandi",
+                "Time": "2023-08-29T18:35:50.4902693+05:00"
+            },
+            {
+                "PersonId": 1,
+                "Activity": "Pistonchi olib tashlandi",
+                "Time": "2023-08-29T18:35:50.4904253+05:00"
+            }
+        ]
+    },
+    {
+        "Person": {
+            "Id": 2,
+            "FirstName": "Palonchi",
+            "LastName": "Palonchiyev"
+        },
+        "history": [
+            {
+                "PersonId": 2,
+                "Activity": "Palonchi qo\u0027shildi",
+                "Time": "2023-08-29T18:35:50.4894105+05:00"
+            }
+        ]
+    }
+]
