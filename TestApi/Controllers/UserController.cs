@@ -14,8 +14,9 @@ namespace TestApi.Controllers
             _userService = userService;
         }
         [HttpPost("user")]
-        public User AddUser(User user)
+        public User AddUser([FromBody]User user)
         {
+            user.Id = Guid.NewGuid();
             _userService.AddUser(user);
             return user;
         }
