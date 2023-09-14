@@ -8,5 +8,5 @@ var notificationManagementService = new NotificationManagementService(userServic
 userService.users.Add(new User("G'ishmat", "G'ishmatov", "giwmat@gmail.com", Status.Registered));
 userService.users.Add(new User("Eshmat", "Eshmatov", "ewmat@gmail.com", Status.Deleted));
 userService.users.Add(new User("Toshmat", "Toshmatov", "towmat@gmail.com", Status.Registered));
-userService.users.Add(new User("Aziz", "Abdurahmonov", "abdura52.uz@gmail.com", Status.Registered));
+//userService.users.Add(new User("Aziz", "Abdurahmonov", "abdura52.uz@gmail.com", Status.Registered));
 await notificationManagementService.NotifyUsers();
