@@ -4,7 +4,7 @@ using N38_HT2;
 using System.Text.Json;
 
 var employee = new Faker<Employee>()
-    .RuleFor(e => e.Id, Guid.NewGuid())
+    .RuleFor(e => e.Id, f => f.Random.Guid())
     .RuleFor(e => e.FirstName, f => f.Person.FirstName)
     .RuleFor(e => e.LastName, f => f.Person.LastName)
     .RuleFor(e => e.EmailAddress, f => f.Person.Email)
@@ -20,7 +20,7 @@ Console.WriteLine(JsonSerializer.Serialize(order.Generate()));
 Console.WriteLine();
 var userAddress = new Faker<UserAddress>()
     .RuleFor(u => u.UserId, employee.Generate().Id)
-    .RuleFor(u => u.TownName, f => f.Address.Country())
+    .RuleFor(u => u.TownName, f => f.Address.City())
     .RuleFor(u => u.RoadName, f => f.Address.StreetName())
     .RuleFor(u => u.HouseNumber, f => f.Address.BuildingNumber());
 Console.WriteLine(JsonSerializer.Serialize(userAddress.Generate()));
