@@ -13,5 +13,7 @@ namespace N38_HT2
         public string LastName { get; set; }
         public string EmailAddress { get; set; }
         public decimal Salary { get; set; }
+        public Order Order { get; set; }
+        public string Password { get; set; }
     }
 }

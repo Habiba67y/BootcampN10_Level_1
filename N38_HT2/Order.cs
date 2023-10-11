@@ -10,7 +10,7 @@ namespace N38_HT2
     {
         public Guid Id { get; set; }
         public string Name { get; set; }
-        public DateTime OrderDate { get; set; }
-        public int Amount { get; set; }
+    //    public DateTime OrderDate { get; set; }
+    //    public int Amount { get; set; }
     }
 }
