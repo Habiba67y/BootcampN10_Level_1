@@ -16,7 +16,7 @@ var services = builder.BuildServiceProvider();
 var userService = services.GetService<IUserService>() ?? throw new InvalidOperationException();
 var accountNotificationService = services.GetRequiredService<IAccountNotificationService>();
 
-var user = new User("Johan", "Liebert", "johanliebert@gmail.com", "qwerty");
+var user = new User("Johan", "Liebert", "sattorovahabiba00@gmail.com", "qwerty");
 
 var addedUser = await userService.Create(user);
 Console.WriteLine($"{addedUser.FirstName} {addedUser.LastName}");
