@@ -36,10 +36,10 @@ public class UserBonusService : IUserBonusService
             return;
         }
 
-        var oldamount = bonus.Amount;
+        var oldAmount = bonus.Amount;
         var updatedBonus = new Bonus { Id = bonus.Id, UserId = bonus.UserId, Amount = bonus.Amount + order.Price };
 
-        var achievment = ToAchieveBonus(oldamount, updatedBonus.Amount);
+        var achievment = ToAchieveBonus(oldAmount, updatedBonus.Amount);
         if (achievment <= 0)
             await _bonusService.UpdateAsync(updatedBonus);
         else

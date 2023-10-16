@@ -1,0 +1,15 @@
+- buyurtmalar ( Order ) va bitta order ichidagi sotib olingan tovarlar ( Product ) uchun endpoint qanday bo'lishligi kerak ?
+
+- orders/orderId/products
+
+- web api konfiguratsiyasi uchun yaratilgan fayllar qaysi layerda turishligi kerak ?
+
+- presentiation
+
+- controller ichida nechta service inject qilish mumkin ?
+
+- bilmadim
+
+- controller ichida foundations service larini ishlatish mumkinmi ?
+
+- ha
