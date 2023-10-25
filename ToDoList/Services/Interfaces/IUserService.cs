@@ -1,5 +1,6 @@
 ﻿using System.Linq.Expressions;
 using ToDoList.Entities;
+using ToDoList.Models;
 
 namespace ToDoList.Services.Interfaces;
 
@@ -18,5 +19,7 @@ public interface IUserService
     ValueTask<User> DeleteAsync(Guid id, bool saveChanges = true, CancellationToken cancellationToken = default);
 
     ValueTask<User> DeleteAsync(User user, bool saveChanges = true, CancellationToken cancellationToken = default);
+
+    ValueTask<User> UploatImageAsync(Guid id, UploadImageDTO imageDto, bool saveChanges = true, CancellationToken cancellationToken = default);
 
 }

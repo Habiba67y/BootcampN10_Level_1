@@ -1,6 +1,7 @@
 ﻿using System.Linq.Expressions;
 using ToDoList.Data;
 using ToDoList.Entities;
+using ToDoList.Models;
 using ToDoList.Services.Interfaces;
 
 namespace ToDoList.Services;
@@ -65,5 +66,10 @@ public class UserService : IUserService
             await _dataContext.SaveChangesAsync();
 
         return foundUser;
+    }
+
+    public ValueTask<User> UploatImageAsync(Guid id, UploadImageDTO imageDto, bool saveChanges = true, CancellationToken cancellationToken = default)
+    {
+        throw new NotImplementedException();
     }
 }

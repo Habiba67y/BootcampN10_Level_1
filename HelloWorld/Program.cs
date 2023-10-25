@@ -1,1 +1,1 @@
-﻿
+﻿Console.WriteLine(Guid.NewGuid());
