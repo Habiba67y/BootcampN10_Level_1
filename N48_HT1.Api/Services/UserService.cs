@@ -1,6 +1,6 @@
 ﻿using N48_HT1.Api.DataAccess;
 using N48_HT1.Api.Models;
-using N48_HT1.Api.Service.Interfaces;
+using N48_HT1.Api.Services.Interfaces;
 using System.Linq.Expressions;
 
 namespace N48_HT1.Api.Services;

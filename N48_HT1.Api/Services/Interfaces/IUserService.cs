@@ -1,7 +1,7 @@
 ﻿using N48_HT1.Api.Models;
 using System.Linq.Expressions;
 
-namespace N48_HT1.Api.Service.Interfaces
+namespace N48_HT1.Api.Services.Interfaces
 {
     public interface IUserService
     {

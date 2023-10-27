@@ -1,4 +1,4 @@
-namespace N34.TestApi
+namespace TestApi
 {
     public class WeatherForecast
     {
