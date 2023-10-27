@@ -1,6 +1,8 @@
 using FileBaseContext.Context.Models.Configurations;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
+using Microsoft.OpenApi.Models;
+using N63_HT1.Constants;
 using N63_HT1.Data;
 using N63_HT1.Models.Settings;
 using N63_HT1.Services;
@@ -27,7 +29,8 @@ builder.Services
     .AddTransient<ITokenGenerateService, TokenGenerateService>()
     .AddScoped<IUserService, UserService>()
     .AddScoped<IStorageFileService, StorageFileService>()
-    .AddScoped<IAuthService, AuthService>();
+    .AddScoped<IAuthService, AuthService>()
+    .AddScoped<IFileService, FileService>();
 
 builder.Services.AddControllers();
 
@@ -54,15 +57,37 @@ builder
     });
 
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+builder.Services.AddSwaggerGen(options =>
+{
+    options.AddSecurityDefinition(SwaggerConstants.SecurityDefinitionName, new OpenApiSecurityScheme
+    {
+        Name = SwaggerConstants.SecuritySchemeName,
+        Type = SecuritySchemeType.ApiKey,
+        Scheme = SwaggerConstants.SecurityScheme,
+        In = ParameterLocation.Header,
+        Description = SwaggerConstants.SwaggerAuthorizationDescription
+    });
+    options.AddSecurityRequirement(new OpenApiSecurityRequirement
+    {
+        {
+            new OpenApiSecurityScheme
+            {
+                Reference = new OpenApiReference
+                {
+                    Type = ReferenceType.SecurityScheme,
+                    Id = SwaggerConstants.SecurityScheme
+                }
+            },
+            Array.Empty<string>()
+        }
+    });
+});
 
 var app = builder.Build();
 
-if (app.Environment.IsDevelopment())
-{
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
+app.UseSwagger();
+app.UseSwaggerUI();
+
 
 app.UseHttpsRedirection();
 app.MapControllers();

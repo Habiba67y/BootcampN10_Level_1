@@ -16,10 +16,13 @@ public class FileService : IFileService
     public ValueTask<Stream> UploadFileAsync(IFormFile file, StorageFile storageFile)
     {
         var path = _fileStorgaeSettings.UserProfileFilesPathPattern
-            .Replace("{{UserId}}", storageFile.Id.ToString())
-            .Replace("{{FileId}}", storageFile.Id.ToString());
+            .Replace("{{UserId}}", storageFile.UserId.ToString());
+            
+       if(!Directory.Exists(path))
+            Directory.CreateDirectory(path);
 
-        var stream = File.Open(path, FileMode.Open, FileAccess.Read);
+       var stream = File.Create(Path.Combine(path, $"{storageFile.Id}{storageFile.Extension}"));
+        //var stream = File.Open(Path.Combine(path, $"{storageFile.Id}{storageFile.Extension}"), FileMode.Open, FileAccess.Read);
         file.CopyTo(stream);
         
         return new(stream);
