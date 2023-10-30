@@ -2,7 +2,7 @@
 
 namespace ToDoList.Services;
 
-public class FileService : IFileService
+public class FileService //: IFileService
 {
     private readonly string _folderName = "images";
     private readonly string _basePath;
@@ -13,10 +13,10 @@ public class FileService : IFileService
     }
     public string FolderName => _folderName;
 
-    public ValueTask<bool> DeleteAsync(string path)
-    {
+    //public ValueTask<bool> DeleteAsync(string path)
+    //{
         
-    }
+    //}
 
     public async ValueTask<string> SaveAsync(IFormFile image)
     {

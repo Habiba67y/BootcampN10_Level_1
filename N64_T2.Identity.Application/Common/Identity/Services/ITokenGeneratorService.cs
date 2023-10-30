@@ -4,7 +4,7 @@ using System.Security.Claims;
 
 namespace N64_T2.Identity.Application.Common.Identity.Services;
 
-public interface ITokenGenerateService
+public interface ITokenGeneratorService
 {
     string GetToken(User user);
     JwtSecurityToken GetJwtToken(User user);

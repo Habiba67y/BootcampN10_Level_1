@@ -16,4 +16,8 @@
     <ProjectReference Include="..\N64_T2.Identity.Infrastructure\N64_T2.Identity.Infrastructure.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\" />
+  </ItemGroup>
+
 </Project>

@@ -10,11 +10,11 @@ using System.Text;
 
 namespace N64_T2.Identity.Infrastructure.Common.Identity.Services;
 
-public class TokenGenerateService : ITokenGenerateService
+public class TokenGeneratorService : ITokenGeneratorService
 {
     private readonly JwtSettings _jwtSettings;
 
-    public TokenGenerateService(IOptions<JwtSettings> jwtSettings)
+    public TokenGeneratorService(IOptions<JwtSettings> jwtSettings)
     {
         _jwtSettings = jwtSettings.Value;
     }

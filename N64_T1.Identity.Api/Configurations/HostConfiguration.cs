@@ -7,6 +7,7 @@ public static partial class HostConfiguration
         builder
             .AddDevTools()
             .AddIdentityInfrustructure()
+            .AddNotificationInfrustructure()
             .AddExposers();
 
         return new(builder);

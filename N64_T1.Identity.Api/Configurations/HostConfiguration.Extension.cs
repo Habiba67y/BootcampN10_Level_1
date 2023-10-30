@@ -1,8 +1,10 @@
 ﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using N64_T2.Identity.Application.Common.Identity.Services;
+using N64_T2.Identity.Application.Common.Notifications.Servcies;
 using N64_T2.Identity.Application.Common.Settings;
 using N64_T2.Identity.Infrastructure.Common.Identity.Services;
+using N64_T2.Identity.Infrastructure.Common.Notifucations.Services;
 using System.Net.Sockets;
 using System.Text;
 
@@ -12,14 +14,20 @@ public static partial class HostConfiguration
 {
     private static WebApplicationBuilder AddIdentityInfrustructure(this WebApplicationBuilder builder)
     {
-        builder.Services.Configure<JwtSettings>(builder.Configuration.GetSection(nameof(JwtSettings)));
-        builder.Services.AddTransient<ITokenGenerateService, TokenGenerateService>();
+        builder.Services
+            .Configure<JwtSettings>(builder.Configuration.GetSection(nameof(JwtSettings)))
+            .Configure<VerificationTokenSettings>(builder.Configuration.GetSection(nameof(VerificationTokenSettings)));
+        
+        builder.Services
+            .AddTransient<ITokenGeneratorService, TokenGeneratorService>()
+            .AddTransient<IPasswordHasherService, PasswordHasherService>()
+            .AddTransient<IVerificationTokenGeneratorService, VerificationTokenGeneratorService>();
 
-        builder.Services.AddSingleton<IPasswordHasherService, PasswordHasherService>();
+        builder.Services
+            .AddScoped<IAuthService, AuthService>()
+            .AddScoped<IAccountService, AccountService>();
 
-        builder.Services.AddScoped<IAuthService, AuthService>();
-
-        var jwtSettings = new JwtSettings();
+       var jwtSettings = new JwtSettings();
         builder.Configuration.GetSection(nameof(JwtSettings)).Bind(jwtSettings);
 
         builder
@@ -45,6 +53,14 @@ public static partial class HostConfiguration
         return builder;
     }
 
+    private static WebApplicationBuilder AddNotificationInfrustructure(this WebApplicationBuilder builder)
+    {
+        builder.Services.Configure<EmailSenderSettings>(builder.Configuration.GetSection(nameof(EmailSenderSettings)));
+
+        builder.Services.AddScoped<IEmailOrchestrationService, EmailOrchestrationService>();
+
+        return builder;
+    }
     private static WebApplicationBuilder AddDevTools(this WebApplicationBuilder builder)
     {
         builder.Services.AddSwaggerGen();
@@ -55,7 +71,7 @@ public static partial class HostConfiguration
     
     private static WebApplicationBuilder AddExposers(this WebApplicationBuilder builder)
     {
-        builder.Services.AddRouting();
+        builder.Services.AddRouting(options => options.LowercaseUrls = true);
         builder.Services.AddControllers();
 
         return builder;
