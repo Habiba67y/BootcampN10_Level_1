@@ -32,7 +32,7 @@ public class AuthorsController : ControllerBase
     }
 
     [HttpPost]
-    public async ValueTask<IActionResult> Create(Author author)
+    public async ValueTask<IActionResult> Create([FromBody]Author author)
     {
         var result = await _authorService.CreateAsync(author);
 
@@ -40,7 +40,7 @@ public class AuthorsController : ControllerBase
     }
 
     [HttpPut]
-    public async ValueTask<IActionResult> Update(Author author)
+    public async ValueTask<IActionResult> Update([FromBody]Author author)
     {
         await _authorService.UpdateAsync(author);
 

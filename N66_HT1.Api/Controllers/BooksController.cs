@@ -33,7 +33,7 @@ public class BooksController : ControllerBase
     }
 
     [HttpPost]
-    public async ValueTask<IActionResult> Create(Book book)
+    public async ValueTask<IActionResult> Create([FromBody]Book book)
     {
         var result = await _bookService.CreateAsync(book);
 
@@ -41,7 +41,7 @@ public class BooksController : ControllerBase
     }
 
     [HttpPut]
-    public async ValueTask<IActionResult> Update(Book book)
+    public async ValueTask<IActionResult> Update([FromBody] Book book)
     {
         await _bookService.UpdateAsync(book);
 
