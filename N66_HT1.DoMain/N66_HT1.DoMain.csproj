@@ -6,8 +6,4 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
-  <ItemGroup>
-    <PackageReference Include="Max.FileBaseContext.Context" Version="0.0.7" />
-  </ItemGroup>
-
 </Project>

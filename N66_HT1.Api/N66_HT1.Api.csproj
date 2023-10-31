@@ -8,17 +8,17 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="7.0.7" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="7.0.13">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\N64_T2.Identity.Application\N64_T2.Identity.Application.csproj" />
-    <ProjectReference Include="..\N64_T2.Identity.Infrastructure\N64_T2.Identity.Infrastructure.csproj" />
+    <ProjectReference Include="..\N66_HT1.Application\N66_HT1.Application.csproj" />
     <ProjectReference Include="..\N66_HT1.Infrastructure\N66_HT1.Infrastructure.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="wwwroot\" />
+    <ProjectReference Include="..\N66_HT1.Persistence\N66_HT1.Persistence.csproj" />
   </ItemGroup>
 
 </Project>

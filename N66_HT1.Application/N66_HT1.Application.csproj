@@ -7,7 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Max.FileBaseContext.Context" Version="0.0.7" />
+    <ProjectReference Include="..\N66_HT1.DoMain\N66_HT1.DoMain.csproj" />
   </ItemGroup>
 
 </Project>

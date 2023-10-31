@@ -1,5 +1,4 @@
 ﻿using N48_HT1.Api.Models;
-using N48_HT1.Api.Service.Interfaces;
 using N48_HT1.Api.Services.Interfaces;
 
 namespace N48_HT1.Api.Services;
