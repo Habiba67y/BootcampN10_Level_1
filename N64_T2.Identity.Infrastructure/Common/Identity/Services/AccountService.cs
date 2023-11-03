@@ -7,21 +7,22 @@ namespace N64_T2.Identity.Infrastructure.Common.Identity.Services;
 
 public class AccountService : IAccountService
 {
-    public static readonly List<User> _users = new();
-    public List<User> Users => _users;
-
     private readonly IVerificationTokenGeneratorService _verificationTokenGeneratorService;
     private readonly IEmailOrchestrationService _emailOrchestrationService;
+    private readonly IUserService _userService;
 
+    public List<User> Users => _userService.Get(user => true).ToList();
 
     public AccountService
         (
         IVerificationTokenGeneratorService verificationTokenGeneratorService,
-        IEmailOrchestrationService emailOrchestrationService
+        IEmailOrchestrationService emailOrchestrationService,
+        IUserService userService
         )
     {
         _emailOrchestrationService = emailOrchestrationService;
         _verificationTokenGeneratorService = verificationTokenGeneratorService;
+        _userService = userService;
     }
     public ValueTask<bool> VerficateAsync(string token)
     {
@@ -44,7 +45,7 @@ public class AccountService : IAccountService
 
     public ValueTask<User> CreateAsync(User user)
     {
-        _users.Add(user);
+        _userService.CreateAsync(user);
 
         var emailVerificationToken = _verificationTokenGeneratorService.GenerateToken(VerificationType.EmailAddressVerification, user.Id);
         _emailOrchestrationService.SendAsync(user.EmailAddress, emailVerificationToken);
@@ -52,12 +53,12 @@ public class AccountService : IAccountService
         return new(user);
     }
 
-    public ValueTask<bool> MarkAsEmailVerifiedAync(Guid userId)
+    public async ValueTask<bool> MarkAsEmailVerifiedAync(Guid userId)
     {
-        var foundUser = _users.FirstOrDefault(user => user.Id == userId) ?? throw new InvalidOperationException("User not found");
+        var foundUser = await _userService.GetByIdAsync(userId); 
 
         foundUser.IsEmailAddressVerified = true;
 
-        return new(foundUser.IsEmailAddressVerified);
+        return foundUser.IsEmailAddressVerified;
     }
 }

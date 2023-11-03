@@ -5,13 +5,22 @@ using N64_T2.Identity.Application.Common.Notifications.Servcies;
 using N64_T2.Identity.Application.Common.Settings;
 using N64_T2.Identity.Infrastructure.Common.Identity.Services;
 using N64_T2.Identity.Infrastructure.Common.Notifucations.Services;
-using System.Net.Sockets;
+using N64_T2.Identity.Persistence.DataContexts;
 using System.Text;
 
 namespace N64_T1.Identity.Api.Configurations;
 
 public static partial class HostConfiguration
 {
+    private static WebApplicationBuilder AddDbContext(this WebApplicationBuilder builder)
+    {
+        builder.Services.Configure<DbContextSettings>(builder.Configuration.GetSection(nameof(DbContextSettings)));
+
+        builder.Services.AddDbContext<IDbContext, AppDbContext>();
+
+        return builder;
+    }
+
     private static WebApplicationBuilder AddIdentityInfrustructure(this WebApplicationBuilder builder)
     {
         builder.Services
@@ -24,6 +33,8 @@ public static partial class HostConfiguration
             .AddTransient<IVerificationTokenGeneratorService, VerificationTokenGeneratorService>();
 
         builder.Services
+            .AddScoped<ITokenService, TokenService>()
+            .AddScoped<IUserService, UserService>()
             .AddScoped<IAuthService, AuthService>()
             .AddScoped<IAccountService, AccountService>();
 

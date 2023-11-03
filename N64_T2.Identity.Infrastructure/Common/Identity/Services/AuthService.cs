@@ -12,19 +12,22 @@ public class AuthService : IAuthService
     private readonly IPasswordHasherService _passwordHasherService;
     private readonly IAccountService _accountService;
     private readonly IEmailOrchestrationService _emailOrchestrationService;
+    private readonly ITokenService _tokenService;
 
     public AuthService
         (
         ITokenGeneratorService token, 
         IPasswordHasherService passwordHasherService,
         IAccountService accountService,
-        IEmailOrchestrationService emailOrchestrationService
+        IEmailOrchestrationService emailOrchestrationService,
+        ITokenService tokenService
         )
     {
         _tokenGenerateService = token;
         _passwordHasherService = passwordHasherService;
         _accountService = accountService;
         _emailOrchestrationService= emailOrchestrationService;
+        _tokenService = tokenService;
 
     }
     public async ValueTask<bool> Register(RegisterDetails registerDetails)
@@ -58,6 +61,13 @@ public class AuthService : IAuthService
             throw new AuthenticationException("Password is invalid");
         }
 
-        return new(_tokenGenerateService.GetToken(foundUser));
+        var token = _tokenGenerateService.GetToken(foundUser);
+        _tokenService.CreateAsync(new Token
+        {
+            UserId = foundUser.Id,
+            Name = token
+        });
+
+        return new(token);
     }
 }

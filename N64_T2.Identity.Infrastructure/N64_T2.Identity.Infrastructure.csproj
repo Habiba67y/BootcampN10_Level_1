@@ -15,6 +15,7 @@
   <ItemGroup>
     <ProjectReference Include="..\N64_T2.Identity.Application\N64_T2.Identity.Application.csproj" />
     <ProjectReference Include="..\N64_T2.Identity.DoMain\N64_T2.Identity.DoMain.csproj" />
+    <ProjectReference Include="..\N64_T2.Identity.Persistence\N64_T2.Identity.Persistence.csproj" />
   </ItemGroup>
 	
 	<ItemGroup>
