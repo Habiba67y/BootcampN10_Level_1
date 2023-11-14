@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using N64_T2.Identity.Application.Common.Identity.Services;
 using N64_T2.Identity.Application.Common.Notifications.Servcies;
@@ -6,17 +7,24 @@ using N64_T2.Identity.Application.Common.Settings;
 using N64_T2.Identity.Infrastructure.Common.Identity.Services;
 using N64_T2.Identity.Infrastructure.Common.Notifucations.Services;
 using N64_T2.Identity.Persistence.DataContexts;
+using N64_T2.Identity.Persistence.Repositories;
+using N64_T2.Identity.Persistence.Repositories.Interfaces;
 using System.Text;
 
 namespace N64_T1.Identity.Api.Configurations;
 
 public static partial class HostConfiguration
 {
-    private static WebApplicationBuilder AddDbContext(this WebApplicationBuilder builder)
+    private static WebApplicationBuilder AddHttpContextProvider(this WebApplicationBuilder builder)
     {
-        builder.Services.Configure<DbContextSettings>(builder.Configuration.GetSection(nameof(DbContextSettings)));
+        builder.Services.AddHttpContextAccessor();
 
-        builder.Services.AddDbContext<IDbContext, AppDbContext>();
+        return builder;
+    }
+    private static WebApplicationBuilder AddPersistence(this WebApplicationBuilder builder)
+    {
+        builder.Services.AddDbContext<IdentityDbContext>(options =>
+            options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
 
         return builder;
     }
@@ -26,17 +34,25 @@ public static partial class HostConfiguration
         builder.Services
             .Configure<JwtSettings>(builder.Configuration.GetSection(nameof(JwtSettings)))
             .Configure<VerificationTokenSettings>(builder.Configuration.GetSection(nameof(VerificationTokenSettings)));
-        
+
+        builder.Services.AddDataProtection();
+
         builder.Services
             .AddTransient<ITokenGeneratorService, TokenGeneratorService>()
             .AddTransient<IPasswordHasherService, PasswordHasherService>()
             .AddTransient<IVerificationTokenGeneratorService, VerificationTokenGeneratorService>();
 
         builder.Services
-            .AddScoped<ITokenService, TokenService>()
-            .AddScoped<IUserService, UserService>()
+            .AddScoped<IUserRepository, UserRepository>()
+            .AddScoped<IRoleRepository, RoleRepository>()
+            .AddScoped<IAccessTokenRepository, AccessTokenRepository>();
+
+        builder.Services
             .AddScoped<IAuthService, AuthService>()
-            .AddScoped<IAccountService, AccountService>();
+            .AddScoped<IAccountService, AccountService>()
+            .AddScoped<IUserService, UserService>()
+            .AddScoped<IAccessTokenService, AccessTokenService>()
+            .AddScoped<IRoleService, RoleService>();
 
        var jwtSettings = new JwtSettings();
         builder.Configuration.GetSection(nameof(JwtSettings)).Bind(jwtSettings);

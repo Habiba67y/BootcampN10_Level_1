@@ -1,1 +1,1 @@
-﻿Console.WriteLine(Guid.NewGuid());
+﻿Console.WriteLine(new Random().Next(1, 1));

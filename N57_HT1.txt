@@ -1,0 +1,2 @@
+- emailsettings, usersettings (like user's age, for example, to compare users' age with 18)
+- i guess, primitive types

@@ -6,7 +6,8 @@ public static partial class HostConfiguration
     {
         builder
             .AddDevTools()
-            .AddDbContext()
+            .AddPersistence()
+            .AddHttpContextProvider()
             .AddIdentityInfrustructure()
             .AddNotificationInfrustructure()
             .AddExposers();

@@ -10,9 +10,7 @@ public class AccountService : IAccountService
     private readonly IVerificationTokenGeneratorService _verificationTokenGeneratorService;
     private readonly IEmailOrchestrationService _emailOrchestrationService;
     private readonly IUserService _userService;
-
-    public List<User> Users => _userService.Get(user => true).ToList();
-
+    
     public AccountService
         (
         IVerificationTokenGeneratorService verificationTokenGeneratorService,

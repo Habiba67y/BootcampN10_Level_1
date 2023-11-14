@@ -1,6 +1,8 @@
-﻿using N64_T2.Identity.Application.Common.Identity.Services;
+﻿using Microsoft.EntityFrameworkCore;
+using N64_T2.Identity.Application.Common.Identity.Services;
 using N64_T2.Identity.DoMain.Entities;
 using N64_T2.Identity.Persistence.DataContexts;
+using N64_T2.Identity.Persistence.Repositories.Interfaces;
 using System.Linq.Expressions;
 using System.Text.RegularExpressions;
 
@@ -8,61 +10,44 @@ namespace N64_T2.Identity.Infrastructure.Common.Identity.Services;
 
 public class UserService : IUserService
 {
-    private readonly IDbContext _dbContext;
+    private readonly IUserRepository _repository;
 
-    public UserService(IDbContext dbContext)
+    public UserService(IUserRepository userRepository)
     {
-        _dbContext = dbContext;
+        _repository = userRepository;
     }
 
-    public IQueryable<User> Get(Expression<Func<User, bool>> predicate)
-    => _dbContext.Users.Where(predicate.Compile()).AsQueryable();
+    public IQueryable<User> Get(Expression<Func<User, bool>>? predicate = default, bool asNoTracking = false)
+    => _repository.Get(predicate, asNoTracking);
 
-    public ValueTask<ICollection<User>> GetAsync(IEnumerable<Guid> ids, CancellationToken cancellationToken = default)
-    => new(Get(user => ids.Contains(user.Id)).ToList());
+    public async ValueTask<ICollection<User>> GetAsync(IEnumerable<Guid> ids, bool asNoTracking = false, CancellationToken cancellationToken = default)
+    => await _repository.GetByIdsAsync(ids, asNoTracking, cancellationToken);
 
-    public async ValueTask<User?> GetByIdAsync(Guid id, CancellationToken cancellationToken = default)
-    => await _dbContext.Users.FindAsync(id, cancellationToken) ?? throw new InvalidOperationException("User not found");
+    public async ValueTask<User?> GetByIdAsync(Guid id, bool asNoTracking = false, CancellationToken cancellationToken = default)
+    => await _repository.GetByIdAsync(id, asNoTracking, cancellationToken);
+
+    public async ValueTask<User?> GetByEmailAsync(string email, bool asNoTracking = false, CancellationToken cancellationToken = default)
+    => await Get(asNoTracking: asNoTracking).SingleOrDefaultAsync(user => user.EmailAddress.Equals(email));
 
     public async ValueTask<User> CreateAsync(User user, bool saveChanges = true, CancellationToken cancellationToken = default)
     {
         Validate(user);
 
-        await _dbContext.Users.AddAsync(user);
-
-        if(saveChanges) await _dbContext.SaveChangesAsync(cancellationToken);
-
-        return user;
+        return await _repository.CreateAsync(user, saveChanges, cancellationToken);
     }
 
     public async ValueTask<User> UpdateAsync(User user, bool saveChanges = true, CancellationToken cancellationToken = default)
     {
         Validate(user);
 
-        var foundUser = await GetByIdAsync(user.Id);
-
-        foundUser.FirstName = user.FirstName;
-        foundUser.LastName = user.LastName;
-        foundUser.EmailAddress = user.EmailAddress;
-        foundUser.Password = user.Password;
-        foundUser.Age = user.Age;
-
-        if (saveChanges) await _dbContext.SaveChangesAsync(cancellationToken);
-
-        return foundUser;
+        return await _repository.UpdateAsync(user, saveChanges, cancellationToken);
     }
 
-    public async ValueTask<User> DeleteAsync(Guid id, bool saveChanges = true, CancellationToken cancellationToken = default)
-    {
-        var foundUser = await GetByIdAsync(id);
-
-        _dbContext.Users.Remove(foundUser);
-
-        return foundUser;
-    }
+    public ValueTask<User> DeleteAsync(Guid id, bool saveChanges = true, CancellationToken cancellationToken = default)
+    => _repository.DeleteByIdAsync(id, saveChanges, cancellationToken);
 
     public ValueTask<User> DeleteAsync(User user, bool saveChanges = true, CancellationToken cancellationToken = default)
-    => DeleteAsync(user.Id, saveChanges, cancellationToken);
+    => _repository.DeleteAsync(user, saveChanges, cancellationToken);
 
     private void Validate(User user)
     {
@@ -75,4 +60,5 @@ public class UserService : IUserService
         if (user.Age < 1)
             throw new InvalidDataException("Invalid age");
     }
+
 }
